@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Hello') {
             steps {
-                hello(name:"$params.NAME",day:"$params.DAY")
+                hello(name:"${params.NAME}",day:"${params.DAY}")
                 bat "echo %cd%"
                 bat "echo %~dp0"
             }
