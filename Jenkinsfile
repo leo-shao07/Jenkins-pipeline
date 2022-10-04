@@ -15,4 +15,9 @@ pipeline {
             }
         }
     }
+    post { 
+        unstable { 
+            echo 'The pipeline is unstable(msg from post)'
+        }
+    }
 }
