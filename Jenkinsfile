@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                catchError(message:'build stage has fail blablabla',stageResult:'UNSTABLE'){
+                catchError(message:'build stage has fail blablabla',stageResult:'UNSTABLE',buildResult:'UNSTABLE'){
                     bat "exit 1"
                 }
             }
