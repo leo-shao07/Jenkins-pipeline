@@ -9,7 +9,7 @@ pipeline {
         stage('Hello') {
             steps {
 //                 hello(name:"${params.NAME}",day:"${params.DAY}")
-                baa "echo ${params.null}"
+                bat "echo ${params.null}"
             }
         }
     }
