@@ -6,11 +6,16 @@ pipeline {
         choice(name: 'DAY', choices:["Mon","Tue","Wed"],description: "select week days")
     }
     stages {
-        stage('Hello') {
+        stage('Build') {
             steps {
-                hello(name:"${params.NAME}",day:"${params.DAY}")
-                bat "echo %cd%"
-                bat "echo %~dp0"
+                catcherror(message:'build stage has fail blablabla'){
+                    bat "exit 1"
+                }
+            }
+        }
+        stage('Test') {
+            steps {
+                bat "echo this is Test stage"
             }
         }
     }
