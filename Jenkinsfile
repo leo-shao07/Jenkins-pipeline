@@ -1,16 +1,30 @@
 @Library("shared-library")_
 pipeline {
     agent any
-    parameters {
-        string(name: 'NAME', defaultValue: 'John', description: 'this is name field.')
-        choice(name: 'DAY', choices:["Mon","Tue","Wed"],description: "select week days")
+    environment {
+        TEST_FLAG = 'false'
+        DEPLOY_FLAG = 'true'
     }
     stages {
-        stage('Hello') {
+        stage('BUILD') {
             steps {
-                hello(name:"${params.NAME}",day:"${params.DAY}")
-                bat "echo %cd%"
-                bat "echo %~dp0"
+                bat "echo building......"
+            }
+        }
+        stage('TEST') {
+            when {
+                environment name: 'TEST_FLAG', value: 'true'
+            }
+            steps {
+                echo 'testing'
+            }
+        }
+        stage('DEPLOY') {
+            when {
+                environment name: 'DEPLOY_FLAG', value: 'true'
+            }
+            steps {
+                echo 'Deploying'
             }
         }
     }
