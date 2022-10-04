@@ -1,14 +1,10 @@
 @Library("shared-library")_
 pipeline {
     agent any
-    parameters {
-        string(name: 'NAME', defaultValue: 'John', description: 'this is name field.')
-        choice(name: 'DAY', choices:["Mon","Tue","Wed"],description: "select week days")
-    }
     stages {
         stage('Build') {
             steps {
-                catchError(message:'build stage has fail blablabla'){
+                catchError(message:'build stage has fail blablabla',stageResult:'UNSTABLE'){
                     bat "exit 1"
                 }
             }
