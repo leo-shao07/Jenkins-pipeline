@@ -9,6 +9,7 @@ pipeline {
         stage('Hello') {
             steps {
                 hello(name:"${params.NAME}",day:"${params.DAY}")
+                addSidebarLink(url:'https://www.trendmicro.com/zh_tw/forHome.html', text:'Trendmicro website', icon:'/userContent/icon.png')
                 bat "echo %cd%"
                 bat "echo %~dp0"
             }
