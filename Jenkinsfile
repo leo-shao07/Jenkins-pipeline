@@ -5,7 +5,7 @@ pipeline {
         buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '', numToKeepStr: '5')   
     }
     parameters {
-        string(name: 'NAME', defaultValue: 'John', description: 'this is name field.')
+        string(name: 'NAME', defaultValue: 'Johnn', description: 'this is name field.')
         choice(name: 'DAY', choices:["Mon","Tue","Wed"],description: "select week days")
     }
     stages {
