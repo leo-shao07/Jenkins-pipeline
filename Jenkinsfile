@@ -2,7 +2,7 @@
 pipeline {
     agent any
     options {
-        timestamp()
+        timestamps()
         buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '3', daysToKeepStr: '', numToKeepStr: '5')   
     }
     parameters {
